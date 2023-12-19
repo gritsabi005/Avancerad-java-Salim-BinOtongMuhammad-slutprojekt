@@ -75,7 +75,6 @@ public class WeatherAPI {
                 forecastMap.put()
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
