@@ -72,6 +72,7 @@ public class WeatherAPI {
             for (Object serverDatafromWeatherAPI : list){
                 JSONObject theList = (JSONObject) serverDatafromWeatherAPI;
                 //take the info here
+                //Will have to look at the WeatherAPI for all the codes
                 forecastMap.put()
             }
 
