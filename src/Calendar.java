@@ -429,41 +429,6 @@ public class Calendar implements ActionListener{
             }
         }
 
-        /*if (e.getSource() == fetchWeatherButton) {
-            String city = cityTextField.getText();
-            Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city);
-
-            Days setDates = new Days();
-            LocalDate startOfWeek = setDates.getStartOfWeek();
-            for (int i = 0; i < 7; i++) {
-                LocalDate date = startOfWeek.plusDays(i);
-                String weather = weatherForecast.getOrDefault(date, "Fetch it!");
-                weatherLabels[i].setText(weather);
-            }
-
-            String weather = WeatherAPI.getWeather(city);
-            SwingUtilities.invokeLater(() -> {
-                weatherInfoLabel.setText("Weather in " + city + " today: " + weather);
-            });
-        }
-
-        for (int i = 0; i < 7; i++) {
-
-            if (e.getSource() == createEventButtons[i]) {
-
-                String eventText = eventTextFields[i].getText();
-                if (!eventText.isEmpty()) {
-
-                    String existingText = sizeableEventsLabels[i].getText().isEmpty() ? "" : sizeableEventsLabels[i].getText() + "<br>";
-                    sizeableEventsLabels[i].setText("<html><div style='text-align: center; width: 100%; word-wrap: break-word;'>" + existingText + eventText + "</div>");
-                }
-
-
-                eventTextFields[i].setText("");
-            }
-        }*/
-
-
         frame.revalidate();
         frame.repaint();
     }
