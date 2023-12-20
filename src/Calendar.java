@@ -413,7 +413,7 @@ public class Calendar implements ActionListener{
         if (e.getSource() == fetchWeatherButton) {
             String city = cityTextField.getText();
 
-            Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city);
+            Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city); //a Map
             System.out.println(weatherForecast);
             WeatherAPI.CityInfo funFact = WeatherAPI.getCityInformation(city);
 
