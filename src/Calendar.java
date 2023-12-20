@@ -414,24 +414,24 @@ public class Calendar implements ActionListener{
             String city = cityTextField.getText();
 
             Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city); //a Map
-            System.out.println(weatherForecast);
+            //System.out.println(weatherForecast);
             WeatherAPI.CityInfo funFact = WeatherAPI.getCityInformation(city);
 
             Days setDates = new Days();
             LocalDate startOfWeek = setDates.getStartOfWeek();
-            System.out.println(startOfWeek);
+            //System.out.println(startOfWeek);
             LocalDate today = LocalDate.now();
 
             for (int i = 0; i < 7; i++) {
                 LocalDate date = startOfWeek.plusDays(i); // it will show monday until sunday dates
-                System.out.println(date);
+                //System.out.println(date);
                 //String weather = weatherForecast.toString();
                 String weather = weatherForecast.get(date);
                 //the get date here means,
                 // get the weather for the dates that are iterated.
                 /*It will know that it
                 will start with monday because the getStartOfWeek method above*/
-                System.out.println(weather);
+                //System.out.println(weather);
                 weatherLabels[i].setText(weather);
 
                 if (date.equals(today)) {

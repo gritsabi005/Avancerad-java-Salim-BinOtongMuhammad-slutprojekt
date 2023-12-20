@@ -75,7 +75,8 @@ public class WeatherAPI {
 
                 String date = (String) theList.get("dt_txt");
                 LocalDate dates = LocalDate.parse(date.split(" ")[0]); //You take away the hours from the date
-
+                String time = (String) theList.get("dt_txt");
+                LocalDate time = LocalDate.parse(time.split(" ")[0]);
                 //System.out.print(dates);
                 //System.out.print(date);
                 //Because temperature is in the main array, so you take the main array first
@@ -101,8 +102,6 @@ public class WeatherAPI {
             this.name = name;
             this.country = country;
             this.population = population;
-
-
         }
 
         public String getName(){
@@ -121,7 +120,9 @@ public class WeatherAPI {
             String cityName = (String) cityInformation.get("name");
             String country = (String) cityInformation.get("country");
             Long population = (Long) cityInformation.get("population");
+
             return new CityInfo(cityName, country, population);
+
         }
     }
     /*To take the API you need to;
@@ -131,6 +132,7 @@ public class WeatherAPI {
     - For Loop to see the Json and take what you want,
     */
     //pass the URL into scanner, scanner filling in the data (while hasNext, which will be used in JSONObject
+
     public static CityInfo getCityInformation (String city){
         try {
             // Creating the URL and the request
@@ -172,7 +174,7 @@ public class WeatherAPI {
             //making jsonData (String) to be jsonObject
             JSONObject jasonData = (JSONObject) parser.parse(data.toString());
 
-            //System.out.println(jasonData);
+            System.out.println(jasonData);
 
 
             JSONObject cityinfo = (JSONObject) jasonData.get("city");
