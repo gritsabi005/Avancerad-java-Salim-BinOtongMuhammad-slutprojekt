@@ -75,8 +75,11 @@ public class WeatherAPI {
 
                 String date = (String) theList.get("dt_txt");
                 LocalDate dates = LocalDate.parse(date.split(" ")[0]); //You take away the hours from the date
-                String time = (String) theList.get("dt_txt");
-                LocalDate time = LocalDate.parse(time.split(" ")[0]);
+                System.out.println(dates);
+                //String time = (String) theList.get("dt_txt");
+                //LocalDate time = LocalDate.parse(time.split(" ")[0]);
+                String highestTemperature = date.split(" ")[1];
+                System.out.println(highestTemperature);
                 //System.out.print(dates);
                 //System.out.print(date);
                 //Because temperature is in the main array, so you take the main array first
