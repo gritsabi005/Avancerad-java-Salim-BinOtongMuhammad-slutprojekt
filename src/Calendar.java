@@ -339,7 +339,7 @@ public class Calendar implements ActionListener{
     private JLabel weatherInfoLabel;
     private JPanel daysPanel;
 
-    private JLabel[] weatherLabels = new JLabel[7];
+    private JLabel[] weatherLabels = new JLabel[7]; // It is actually use for the weather and not GUI
     private JPanel[] dayPanels = new JPanel[7];
     private JLabel[] nameOfTheDays = new JLabel[7];
     private JLabel[] dateLabels = new JLabel[7];
@@ -358,7 +358,7 @@ public class Calendar implements ActionListener{
         // City TextField and Button
         JPanel cityPanel = new JPanel(); // Panel for the city input and button
         cityTextField = new JTextField(20);
-        fetchWeatherButton = new JButton("Show Weather");
+        fetchWeatherButton = new JButton("Show Weather in Celcius");
         cityPanel.add(cityTextField);
         cityPanel.add(fetchWeatherButton);
         frame.add(cityPanel, BorderLayout.NORTH);
@@ -412,23 +412,46 @@ public class Calendar implements ActionListener{
 
         if (e.getSource() == fetchWeatherButton) {
             String city = cityTextField.getText();
+
             Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city);
+            System.out.println(weatherForecast);
+            WeatherAPI.CityInfo funFact = WeatherAPI.getCityInformation(city);
 
             Days setDates = new Days();
             LocalDate startOfWeek = setDates.getStartOfWeek();
+            System.out.println(startOfWeek);
             LocalDate today = LocalDate.now();
 
             for (int i = 0; i < 7; i++) {
-                LocalDate date = startOfWeek.plusDays(i);
-                String weather = weatherForecast.getOrDefault(date, "Retrieving...");
+                LocalDate date = startOfWeek.plusDays(i); // it will show monday until sunday dates
+                System.out.println(date);
+                //String weather = weatherForecast.toString();
+                String weather = weatherForecast.get(date);
+                //the get date here means,
+                // get the weather for the dates that are iterated.
+                /*It will know that it
+                will start with monday because the getStartOfWeek method above*/
+                System.out.println(weather);
                 weatherLabels[i].setText(weather);
 
                 if (date.equals(today)) {
-                    weatherInfoLabel.setText("Weather in " + city + " today: " + weather);
+                    weatherInfoLabel.setText("Weather in " + city + " today: " + weather + ". Fun fact; " + funFact.getName() + " is a city in a country with code " + funFact.getCountry() + " with a population of " + funFact.getPopulation() + " residents.");
                 }
             }
-        }
 
+        }
+        for (int i = 0; i < 7; i++) {
+
+            if (e.getSource() == createEventButtons[i]) {
+                String eventText = eventTextFields[i].getText();
+                if (!eventText.isEmpty()) {
+
+                    String existingText = sizeableEventsLabels[i].getText().isEmpty() ? "" : sizeableEventsLabels[i].getText() + "<br>";
+                    sizeableEventsLabels[i].setText("<html><div style='text-align: center; width: 100%; word-wrap: break-word;'>" + existingText + eventText + "</div>");
+                }
+                eventTextFields[i].setText("");
+            }
+        }
         frame.revalidate();
         frame.repaint();
     }
