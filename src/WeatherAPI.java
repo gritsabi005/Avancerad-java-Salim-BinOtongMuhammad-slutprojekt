@@ -27,7 +27,7 @@ public class WeatherAPI {
             // Creating the URL and the request
 
             // You created the URL here and send the request to weatherAPI
-            String theCity = URLEncoder.encode(city, StandardCharsets.UTF_8.toString());
+            String theCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
             URL url = new URL(weatherAPIURL + "?q=" + theCity + "&appid=" + /*consists of APIKEY here*/
                     apiKey + /*metric system*/"&units=metric");
 
