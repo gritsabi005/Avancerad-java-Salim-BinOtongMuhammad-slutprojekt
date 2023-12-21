@@ -57,7 +57,6 @@ public class Days {
                 calendarLabels[i].setOpaque(false);
             }*/
         }
-
     }
     public LocalDate getStartOfWeek() {
         return today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
