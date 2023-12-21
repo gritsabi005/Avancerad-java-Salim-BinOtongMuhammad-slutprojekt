@@ -413,9 +413,11 @@ public class Calendar implements ActionListener{
         if (e.getSource() == fetchWeatherButton) {
             String city = cityTextField.getText();
 
-            Map<LocalDate, String> weatherForecast = WeatherAPI.getWeatherForecast(city); //a Map
+            WeatherAPI initiated = new WeatherAPI();
+
+            Map<LocalDate, String> weatherForecast = initiated.getWeatherForecast(city); //a Map
             //System.out.println(weatherForecast);
-            WeatherAPI.CityInfo funFact = WeatherAPI.getCityInformation(city);
+            WeatherAPI.CityInfo funFact = initiated.getCityInformation(city);
 
             Days setDates = new Days();
             LocalDate startOfWeek = setDates.getStartOfWeek();

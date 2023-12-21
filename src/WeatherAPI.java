@@ -134,7 +134,8 @@ public class WeatherAPI {
     - Read the response and parse the Json, (while NextLine it with StringBuilder, the use JSON parse)
     - For Loop to see the Json and take what you want,
     */
-    //pass the URL into scanner, scanner filling in the data (while hasNext, which will be used in JSONObject
+    //pass the URL into scanner (encoder, http connection, checking the error, scanner in Stringbuilder)
+    // , scanner filling in the data, (while hasNext, JSON parse, make JSONObject, JSONData, get data
 
     public static CityInfo getCityInformation (String city){
         try {
