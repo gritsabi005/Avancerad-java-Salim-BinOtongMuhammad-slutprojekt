@@ -413,12 +413,13 @@ public class Calendar implements ActionListener{
         if (e.getSource() == fetchWeatherButton) {
             String city = cityTextField.getText();
 
+            //initiating WeatherAPI
             WeatherAPI initiated = new WeatherAPI();
-
             Map<LocalDate, String> weatherForecast = initiated.getWeatherForecast(city); //a Map
             //System.out.println(weatherForecast);
             WeatherAPI.CityInfo funFact = initiated.getCityInformation(city);
 
+            //initiating Days again
             Days setDates = new Days();
             LocalDate startOfWeek = setDates.getStartOfWeek();
             //System.out.println(startOfWeek);
@@ -437,10 +438,13 @@ public class Calendar implements ActionListener{
                 weatherLabels[i].setText(weather);
 
                 if (date.equals(today)) {
-                    weatherInfoLabel.setText("Weather in " + city + " today: " + weather + ". Fun fact; " + funFact.getName() + " is a city in a country with code " + funFact.getCountry() + " with a population of " + funFact.getPopulation() + " residents.");
+                    if(funFact.getPopulation() == 0){
+                        weatherInfoLabel.setText("Weather in " + city + " today: " + weather + ". Fun fact; " + funFact.getName() + " is a country with code " + funFact.getCountry() + ".");
+                    }
+                    else {weatherInfoLabel.setText("Weather in " + city + " today: " + weather + ". Fun fact; " + funFact.getName() + " is a city in a country with code " + funFact.getCountry() + " with a population of " + funFact.getPopulation() + " residents.");
+                    }
                 }
             }
-
         }
         for (int i = 0; i < 7; i++) {
 
