@@ -33,9 +33,7 @@ public class WeatherAPI {
 
             //creating the Http connection using the URL above (that consists of which city the user wants to search)
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            //creating the GET for the data retrieved later on
             connection.setRequestMethod("GET");
-            //connecting to server
             connection.connect();
 
             //Check the response (make the code with catching an error)
@@ -59,8 +57,8 @@ public class WeatherAPI {
 
             //Parsing the Json, taking the weather data
             JSONParser parser = new JSONParser();
-            //making jasonObject (String from the data from the StringBuilder) to be jsonData
-            JSONObject jasonData = (JSONObject) parser.parse(data.toString());
+            JSONObject jasonData = (JSONObject) parser.parse(data.toString());//making jasonObject (String from the data
+            // from the StringBuilder) to be jsonData
 
             //System.out.println(jasonData);
             //making jsonObject into an Array to be later used to reiterate and find the dates and weather
@@ -148,13 +146,10 @@ public class WeatherAPI {
 
             //creating the Http connection using the URL above (that consists of which city the user wants to search)
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            //creating the GET for the data retrieved later on
             connection.setRequestMethod("GET");
-            //connecting to server
             connection.connect();
 
             //Check the response (make the code with catching an error)
-
             //Checking the response, if the response is NOT 200, that means there is a problem fecthing the data
             int responseCode = connection.getResponseCode();
             if (responseCode != 200) {
